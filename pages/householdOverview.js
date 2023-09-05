@@ -4,6 +4,7 @@ import { useState } from "react"
 export function HouseholdOverview(){
     const [partnerOne, setPartnerOne] = useState({name: Timo, amoundPayed: 0.00})
     const [partnerTwo, setPartnerTwo] = useState({name: Sandra, amoundPayed: 0.00})
+    const compare = [partnerOne.amoundPayed, partnerTwo.amoundPayed]
 
 
     return(
