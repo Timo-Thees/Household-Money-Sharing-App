@@ -5,12 +5,13 @@ import styles from '@/styles/Home.module.css'
 import HouseholdOverview from './householdOverview'
 import Login from './login'
 import { useState } from 'react'
+import useLocalStorage from '@/components/useLocalStorage'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [loginStatus, setLoginStatus] = useState(false)
-  const [loginId, setLoginId] = useState([{name: "Timo", password: '123'}])
+  const [loginId, setLoginId] = useLocalStorage("household app user data", [])
 
   return (
     <>
