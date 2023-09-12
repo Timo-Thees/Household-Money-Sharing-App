@@ -2,16 +2,17 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import HouseholdOverview from './householdOverview'
 import Login from './login'
 import { useState } from 'react'
 import useLocalStorage from '@/components/useLocalStorage'
+import UserOverview from './userOvierwiew'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [loginId, setLoginId] = useState(false)
   const [allLogins, setAllLogins] = useLocalStorage("household app user data", [])
+  const [allHouseholds, setAllHouseholds] = useLocalStorage("household data", [])
 
   return (
     <>
@@ -24,7 +25,7 @@ export default function Home() {
         {loginId === false ? 
         <Login setLoginId={setLoginId} allLogins={allLogins} setAllLogins={setAllLogins}/> : 
         <div>        
-          <HouseholdOverview loginId={loginId}/>
+          <UserOverview loginId={loginId} allHouseholds={allHouseholds} setAllHouseholds={setAllHouseholds}/>
           <button onClick={()=>setLoginId(false)}>Log out</button>
         </div>}
       </main>

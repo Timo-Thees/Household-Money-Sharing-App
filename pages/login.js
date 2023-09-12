@@ -24,7 +24,7 @@ export default function Login({setLoginId, allLogins, setAllLogins}){
                 setPasswordFalse(true)
             )
         } else {
-            setLoginId(allLogins[allLoginsIndex].username)
+            setLoginId(allLogins[allLoginsIndex])
         }
 
     }
