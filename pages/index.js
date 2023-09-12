@@ -10,8 +10,8 @@ import useLocalStorage from '@/components/useLocalStorage'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const [loginStatus, setLoginStatus] = useState(false)
-  const [loginId, setLoginId] = useLocalStorage("household app user data", [])
+  const [loginId, setLoginId] = useState(false)
+  const [allLogins, setAllLogins] = useLocalStorage("household app user data", [])
 
   return (
     <>
@@ -21,11 +21,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className={styles.main}>
-        {loginStatus === false ? 
-        <Login setLoginStatus={setLoginStatus} loginId={loginId} setLoginId={setLoginId}/> : 
+        {loginId === false ? 
+        <Login setLoginId={setLoginId} allLogins={allLogins} setAllLogins={setAllLogins}/> : 
         <div>        
-          <HouseholdOverview loginStatus={loginStatus}/>
-          <button onClick={()=>setLoginStatus(false)}>Log out</button>
+          <HouseholdOverview loginId={loginId}/>
+          <button onClick={()=>setLoginId(false)}>Log out</button>
         </div>}
       </main>
     </>

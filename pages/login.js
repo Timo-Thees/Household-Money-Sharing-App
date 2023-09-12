@@ -3,30 +3,28 @@ import UsernameNotFound from "./usernameNotFound";
 import PasswordFalse from "./passwordFalse";
 import CreateNewLogin from "./createNewLogin";
 
-export default function Login({setLoginStatus, loginId, setLoginId}){
+export default function Login({setLoginId, allLogins, setAllLogins}){
     const [usernameNotFound, setUsernameNotFound]= useState(false)
     const [passwordFalse, setPasswordFalse] = useState(false)
     const [createNewLogin, setCreateNewLogin] = useState(false)
     const checkPassword = event =>{
         event.preventDefault();
-        const username = event.target.username.value.toString()
+        const email = event.target.email.value.toString()
         const password = event.target.password.value.toString()
-        const lookForUsername = (element) => element.name === username;
-        const usernameIndex = loginId.findIndex(lookForUsername)
-        console.log(usernameIndex)
-        if(usernameIndex < 0){
+        const lookForEmail = (element) => element.email === email;
+        const allLoginsIndex = allLogins.findIndex(lookForEmail)
+        console.log(allLoginsIndex)
+        if(allLoginsIndex < 0){
             return(
                 setUsernameNotFound(true)
             )} 
-        const comparePassword = loginId[usernameIndex]
-        console.log(comparePassword.password)
-        console.log(password)
+        const comparePassword = allLogins[allLoginsIndex]
         if(password !== comparePassword.password){
             return(
                 setPasswordFalse(true)
             )
         } else {
-            setLoginStatus(username)
+            setLoginId(allLogins[allLoginsIndex].username)
         }
 
     }
@@ -34,10 +32,10 @@ export default function Login({setLoginStatus, loginId, setLoginId}){
         <div>
             {usernameNotFound === true ? <UsernameNotFound setUsernameNotFound={setUsernameNotFound}/> : <></>}
             {passwordFalse === true ? <PasswordFalse setPasswordFalse={setPasswordFalse}/> : <></>}
-            {createNewLogin === true ? <CreateNewLogin loginId={loginId} setLoginId={setLoginId} setCreateNewLogin={setCreateNewLogin}/>:<></>}
+            {createNewLogin === true ? <CreateNewLogin allLogins={allLogins} setAllLogins={setAllLogins} setCreateNewLogin={setCreateNewLogin}/>:<></>}
             <form onSubmit={checkPassword}>
-                <a>Username</a>
-                <input type="text" id="username"/>
+                <a>email</a>
+                <input type="email" id="email"/>
                 <a>Password</a>
                 <input type="password" id="password"/>
                 <button type="submit">Log in</button>
