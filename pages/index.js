@@ -14,6 +14,12 @@ export default function Home() {
   const [allLogins, setAllLogins] = useLocalStorage("household app user data", [])
   const [allHouseholds, setAllHouseholds] = useLocalStorage("household data", [])
 
+  const showStuff = ()=>{
+    console.log(allHouseholds)
+    console.log(loginId)
+    console.log(allLogins)
+}
+//rauswerfen wenn nicht mehr gebraucht
   return (
     <>
       <Head>
@@ -28,6 +34,7 @@ export default function Home() {
           <UserOverview loginId={loginId} allHouseholds={allHouseholds} setAllHouseholds={setAllHouseholds}/>
           <button onClick={()=>setLoginId(false)}>Log out</button>
         </div>}
+        <button onClick={showStuff}>Show Stuff</button>
       </main>
     </>
   )

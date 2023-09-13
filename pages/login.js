@@ -13,7 +13,6 @@ export default function Login({setLoginId, allLogins, setAllLogins}){
         const password = event.target.password.value.toString()
         const lookForEmail = (element) => element.email === email;
         const allLoginsIndex = allLogins.findIndex(lookForEmail)
-        console.log(allLoginsIndex)
         if(allLoginsIndex < 0){
             return(
                 setUsernameNotFound(true)
@@ -26,6 +25,7 @@ export default function Login({setLoginId, allLogins, setAllLogins}){
         } else {
             setLoginId(allLogins[allLoginsIndex])
         }
+        // textfeld muss noch resettet werden
 
     }
     return(

@@ -1,7 +1,5 @@
-import { useState } from "react";
-
 export default function CreateHousehold({setCreateHousehold, allHouseholds, setAllHouseholds, loginId}){
-    const createNewHousehold = event=>{
+    const createNewHousehold = event =>{
         event.preventDefault();
         const householdName = event.target.newHouseholdName.value.toString();
         const firstMemberEmail = loginId.email
@@ -10,10 +8,11 @@ export default function CreateHousehold({setCreateHousehold, allHouseholds, setA
         const newHousehold = {key: key, householdName: householdName, members: [{memberEmail: firstMemberEmail, memberName: firstMemberName, expenses: []}]}
         setAllHouseholds([...allHouseholds, newHousehold])
         setCreateHousehold(false)
+        //textfeld muss noch resettet werden
     }
     return(
         <div>
-            <form onScroll={createNewHousehold}>
+            <form onSubmit={createNewHousehold}>
                 <h2>Household Name</h2>
                 <input type="text" id="newHouseholdName"/>
                 <button type="submit">Ok</button>
