@@ -23,7 +23,8 @@ export default function Login({setLoginId, allLogins, setAllLogins}){
                 setPasswordFalse(true)
             )
         } else {
-            setLoginId(allLogins[allLoginsIndex])
+            const currentLoginId = allLogins[allLoginsIndex]
+            setLoginId(currentLoginId)
         }
         // textfeld muss noch resettet werden
 

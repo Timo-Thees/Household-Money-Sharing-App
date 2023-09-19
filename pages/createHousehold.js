@@ -5,7 +5,7 @@ export default function CreateHousehold({setCreateHousehold, allHouseholds, setA
         const firstMemberEmail = loginId.email
         const firstMemberName = loginId.name
         const key = allHouseholds.length
-        const newHousehold = {key: key, householdName: householdName, members: [{memberEmail: firstMemberEmail, memberName: firstMemberName, expenses: []}]}
+        const newHousehold = {key: key, householdName: householdName, members: [{memberEmail: firstMemberEmail, memberName: firstMemberName, expenses: [{key: 0, expense: 0.00, reason: "-"}]}]}
         setAllHouseholds([...allHouseholds, newHousehold])
         setCreateHousehold(false)
         //textfeld muss noch resettet werden

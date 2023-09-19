@@ -9,7 +9,8 @@ export default function AddExpenses({loginId, householdKey, allHouseholds, setAl
         const lookForThisMember = (members)=> members.memberEmail === loginId.email
         const indexOfThisMember = allHouseholds[indexOfThisHousehold].members.findIndex(lookForThisMember)
         const previousExpenses = allHouseholds[indexOfThisHousehold].members[indexOfThisMember].expenses
-        const newExpenses = [...previousExpenses, {expense: expenses, reason: reason}]
+        const newKey = previousExpenses.lenght
+        const newExpenses = [...previousExpenses, {key: newKey, expense: expenses, reason: reason}]
 /*        setAllHouseholds([...allHouseholds, allHouseholds[indexOfThisHousehold].members[indexOfThisMember].expenses[newExpenses]])
         console.log(allHouseholds[indexOfThisHousehold].members[indexOfThisMember])*/
         /*

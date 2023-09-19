@@ -11,8 +11,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [loginId, setLoginId] = useState(false)
-  const [allLogins, setAllLogins] = useLocalStorage("household app user data", [])
-  const [allHouseholds, setAllHouseholds] = useLocalStorage("household data", [])
+  const [allLogins, setAllLogins] = useLocalStorage("alle logins", [])
+  const [allHouseholds, setAllHouseholds] = useLocalStorage("alle haushalte", [{key: 0, householdName: "Starter", members: [{memberEmail: "a@b.de", memberName: "Tester", expenses: [{key: 0, expense: 0.00, reason: "-"}]}]}])
 
   const showStuff = ()=>{
     console.log(allHouseholds)
